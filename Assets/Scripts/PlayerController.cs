@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     float speed = 10.0f;
+    float yAngle = 0;
     void Start()
     {
         
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+
         InputMove();
     }
 
@@ -22,19 +24,25 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.TransformDirection(Vector3.forward * Time.deltaTime * speed);
+           
+            transform.rotation= Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), Time.deltaTime);
+            transform.position+=(Vector3.forward * Time.deltaTime * speed);
+            //transform.rotation = Quaternion.LookRotation(Vector3.forward);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += transform.TransformDirection(Vector3.back * Time.deltaTime * speed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back), Time.deltaTime);
+            transform.position += (Vector3.back * Time.deltaTime * speed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += transform.TransformDirection(Vector3.left * Time.deltaTime * speed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left), Time.deltaTime);
+            transform.position += (Vector3.left * Time.deltaTime * speed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.TransformDirection(Vector3.right* Time.deltaTime * speed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), Time.deltaTime);
+            transform.position += (Vector3.right * Time.deltaTime * speed);
         }
     }
 }
