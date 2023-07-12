@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	[Header("Components")]
+	Animator anim;
 
+	[Header("Variables")]
 	[SerializeField] float moveSpeed = 10.0f;
 	Vector3 destinationPosition;
 	PlayerState playerState = PlayerState.Idle;
 
-	float waitRatio = 0;
+    private void Awake()
+    {
+		anim = GetComponent<Animator>();
+    }
+
     void Start()
 	{ 
 		Managers.Input.mouseAction -= OnMouseClicked;
@@ -24,10 +31,7 @@ public class PlayerController : MonoBehaviour
 
 	void UpdateIdle()
 	{
-		waitRatio = Mathf.Lerp(waitRatio, 0, 10.0f * Time.deltaTime);
-		Animator anim = GetComponent<Animator>();
-		anim.SetFloat("Ratio", waitRatio);
-		anim.Play("WAITRUN");
+		anim.SetFloat("Speed", 0);
 	}
 
 
@@ -42,11 +46,7 @@ public class PlayerController : MonoBehaviour
 			transform.position += dir.normalized * moveDist;
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 10 * Time.deltaTime);
 		}
-
-		waitRatio = Mathf.Lerp(waitRatio, 1, 10.0f * Time.deltaTime);
-		Animator anim = GetComponent<Animator>();
-		anim.SetFloat("Ratio", waitRatio);
-		anim.Play("WAITRUN");
+		anim.SetFloat("Speed", moveSpeed);
 	}
 
 	
