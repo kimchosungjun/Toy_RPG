@@ -2,17 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class InputManager
 {
-    public Action keyAction = null;
-    public Action<MouseEvent> mouseAction = null;
+    public Action <MouseEvent> mouseAction = null;
     bool pressed = false;
 
     public void OnUpdate()
     {
-        if (Input.anyKey && keyAction != null)
-            keyAction.Invoke();
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (mouseAction != null)
         {
             if (Input.GetMouseButton(0))

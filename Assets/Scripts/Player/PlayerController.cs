@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 		}
 		anim.SetFloat("Speed", moveSpeed);
 	}
-
 	
     void Update()
     {
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
 				UpdateWalk();
 				break;
 		}
-    }
+	}
 
   
 
