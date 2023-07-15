@@ -1,11 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
-public class Button : MonoBehaviour
+public class Button : UIBase
 {
-    public void Test()
+    int score = 0;
+
+
+    private void Start()
     {
-        Debug.Log("테스트중!!");
+        Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
+        Bind<GameObject>(typeof(GameObjects));
+        Get<Text>((int)Texts.ScoreText).text = "Bind Text";
+    }
+
+    public void OnButtonClicked()
+    {
+        score++;
     }
 }

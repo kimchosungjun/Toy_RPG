@@ -19,3 +19,19 @@ public enum PlayerState
     Idle,
     Walk
 }
+
+public enum Buttons
+{
+    PointButton
+}
+
+public enum Texts
+{
+    PointText,
+    ScoreText
+}
+
+public enum GameObjects
+{
+    TestObject,
+}
