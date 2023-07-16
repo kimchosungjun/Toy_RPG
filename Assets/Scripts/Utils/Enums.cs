@@ -35,3 +35,15 @@ public enum GameObjects
 {
     TestObject,
 }
+
+public enum Images
+{
+    ItemIcon,
+
+}
+
+public enum UIEvent
+{
+    Click,
+    Drag,
+}
