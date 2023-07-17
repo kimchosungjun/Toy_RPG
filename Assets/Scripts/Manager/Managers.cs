@@ -13,6 +13,14 @@ public class Managers : MonoBehaviour
     ResourceManager resource = new ResourceManager();
     public static ResourceManager Resource { get { return Instance.resource; } }
 
+    UIManager uiManager = new UIManager();
+    public static UIManager UIManager { get { return Instance.uiManager; } }
+
+    void Start()
+    {
+        Init();
+    }
+
     void Update()
     {
         input.OnUpdate();
