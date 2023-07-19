@@ -8,6 +8,10 @@ using UnityEngine.EventSystems;
 public class UIButton : UIPopup
 {
     int score = 0;
+    enum GameObjects
+    {
+        testButton
+    }
 
     private void Start()
     {

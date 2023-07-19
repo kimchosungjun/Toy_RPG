@@ -39,7 +39,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
-        GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
+        GameObject go = Managers.Resource.Instantiate($"SceneUI/{name}");
         T sceneUI  = Util.GetOrAddComponent<T>(go);
         uiScene = sceneUI;
         go.transform.SetParent(Root.transform);
@@ -50,7 +50,7 @@ public class UIManager
     {
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
-        GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
+        GameObject go = Managers.Resource.Instantiate($"PopupUI/{name}");
         T popup = Util.GetOrAddComponent<T>(go);
         popupStack.Push(popup);
         go.transform.SetParent(Root.transform);

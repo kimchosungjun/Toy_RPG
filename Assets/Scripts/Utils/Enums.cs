@@ -31,11 +31,6 @@ public enum Texts
     ScoreText
 }
 
-public enum GameObjects
-{
-    TestObject,
-}
-
 public enum Images
 {
     ItemIcon,
