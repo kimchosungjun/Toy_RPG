@@ -5,11 +5,11 @@ using UnityEngine;
 public class Managers : MonoBehaviour
 {
     static Managers instance; 
-    static Managers Instance { get { Init(); return instance; } } 
+    static Managers Instance { get { return instance; } } 
 
     InputManager input = new InputManager();
     public static InputManager Input { get { return Instance.input; } }
-
+     
     ResourceManager resource = new ResourceManager();
     public static ResourceManager Resource { get { return Instance.resource; } }
 
@@ -26,14 +26,14 @@ public class Managers : MonoBehaviour
         input.OnUpdate();
     }
 
-    static void Init()
+    void Init()
     {
         if (instance == null)
         {
-			GameObject go = GameObject.Find("@Managers");
+			GameObject go = GameObject.Find("Managers");
             if (go == null)
             {  
-                go = new GameObject { name = "@Managers"};
+                go = new GameObject { name = "Managers"};
                 go.AddComponent<Managers>();
             }
             DontDestroyOnLoad(go);
